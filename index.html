@@ -6,9 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="Tomo" />
-<meta name="theme-color" content="#f5f5f3" />
-<link rel="manifest" href="manifest.json" />
-<link rel="apple-touch-icon" href="icon-180.png" />
+<meta name="theme-color" content="#f7f4ef" />
 <title>Tomo · 友</title>
 <style>
   :root{
@@ -651,7 +649,9 @@ function renderHome(){
   var allDone=fdone&&cardsOk&&state.readDone&&state.produceDone&&state.partDone&&state.plessonDone;
   var doneN=Object.keys(state.done).filter(function(w){return isMain(Number(w));}).length;
   function row(done,title,sub,openFn,checkFn){return '<div class="todo'+(done?" done":"")+'"><button class="tcheck" onclick="'+checkFn+'">'+(done?(state.look==="washi"?"済":svgIcon(IC.check,17)):"")+'</button><div class="ttx"'+(openFn?' onclick="'+openFn+'"':'')+'><b>'+title+'</b><span>'+sub+'</span></div>'+(openFn?'<button class="tgo" onclick="'+openFn+'">Open ›</button>':'')+'</div>';}
-  var h='<div class="card hero"><div class="kana">友</div><p class="eyebrow">'+greet+', Samira</p><h2>Week '+cw.w+' · '+cw.t+'</h2><p>'+cw.cando+'</p></div>';
+  var _sdone=Math.min(state.step||0,STEPS.length);var _qb=(state.best[cw.w]||0);
+  var _gate='<span style="opacity:.72">Steps '+_sdone+'/'+STEPS.length+' · quiz '+(_qb>=PASS?'passed ('+_qb+'%)':(_qb?_qb+'% — need '+PASS+'%':'not taken'))+'</span>';
+  var h='<div class="card hero"><div class="kana">友</div><p class="eyebrow">'+greet+', Samira</p><h2>Week '+cw.w+' · '+cw.t+'</h2><p>'+cw.cando+'</p><p style="margin-top:8px;font-size:12px;letter-spacing:.04em">'+_gate+'</p></div>';
   h+='<div class="sec"><div class="lab"><span class="d"></span>Today’s session</div>';
   // 1 review
   if(due>0){h+=row(state.cardsDone,"Review flashcards",due+" due \u2014 grammar, words &amp; kanji","startDailyReview()","markDaily(\'cardsDone\')");}
@@ -880,7 +880,7 @@ function renderProgress(){
   h+='<div class="card"><div class="barrow"><div class="t"><b>Path to conversation</b><span>'+pct+'%</span></div><div class="track"><i class="g" style="width:'+pct+'%"></i></div></div><p class="muted" style="margin:0;font-size:12.5px">'+doneN+' of '+total+' weeks complete · '+(state.lastStudy?"last studied "+state.lastStudy:"let’s begin!")+'</p></div>';
   const attempted=Object.keys(state.best).map(Number).sort((a,b)=>a-b);
   if(attempted.length){
-    h+='<div class="card"><h3>Quiz mastery</h3>';
+    h+='<div class="card"><h3>Quiz mastery</h3><p class="muted" style="margin:0 0 10px;font-size:12.5px">Your best quiz score for each week. This is <b>not</b> the same as finishing the week — a week only closes when you\u2019ve also ticked all '+STEPS.length+' daily steps.</p>';
     attempted.forEach(w=>{const o=OUTLINE.find(x=>x.w===w);if(!o)return;const b=state.best[w];const col=b>=80?"g":"";
       h+='<div class="barrow"><div class="t"><b>'+(isMain(w)?"Wk "+w:"Rev")+' · '+o.t+'</b><span>'+b+'%</span></div><div class="track"><i class="'+col+'" style="width:'+b+'%;'+(b<80?"background:var(--amber)":"")+'"></i></div></div>';});
     h+='</div>';
@@ -894,8 +894,19 @@ function renderProgress(){
   h+='<div class="card"><div class="barrow"><div class="t"><b>Flashcards</b><span>'+knownCards+'/'+totalCards+' seen · '+dueN+' due</span></div><div class="track"><i style="width:'+(totalCards?Math.round(knownCards/totalCards*100):0)+'%"></i></div></div>'+(leechCount()?'<p class="muted" style="margin:10px 0 0;font-size:12.5px">'+leechCount()+' tricky card(s) — missed 6+ times. Worth a mnemonic.</p>':'')+'</div>';
   h+='<div class="card"><h3>Appearance</h3><p class="muted" style="margin:0 0 8px;font-size:12.5px">Look</p><div class="swatches" style="margin-bottom:14px"><button class="sw'+(state.look!=="washi"?" on":"")+'" onclick="setLook(\'classic\')">Classic</button><button class="sw'+(state.look==="washi"?" on":"")+'" onclick="setLook(\'washi\')">Washi</button></div><p class="muted" style="margin:0 0 12px;font-size:12.5px">Colour</p><div class="swatches">'+THEMES.map(function(t){return '<button class="sw'+(state.theme===t.id?' on':'')+'" onclick="setTheme(\''+t.id+'\')"><span class="dot" style="background:'+t.grad+'"></span>'+t.name+'</button>';}).join('')+'</div></div>';
   h+='<div class="card"><h3>Your data</h3><p class="muted" style="margin:0 0 12px;font-size:12.5px">Your progress is stored in this browser, tied to the app&rsquo;s web address. Back it up before moving the app to a new address, or switching phone.</p><button class="btn ghost block" onclick="exportProgress()" style="margin-bottom:10px">Back up my progress</button><button class="btn ghost block" onclick="importProgress()">Restore from a backup</button></div>';
+  var _cw=currentWeek().w;
+  h+='<div class="card"><h3>Where I actually am</h3><p class="muted" style="margin:0 0 12px;font-size:12.5px">Studied some of this elsewhere, or moved the app to a new address? Tell Tomo the week you\u2019re <b>currently on</b>. Every earlier week is marked complete and its flashcards are added to your review deck.</p><div style="display:flex;gap:10px;align-items:center"><select id="jumpW" style="flex:1;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit">'+OUTLINE.filter(function(o){return isMain(o.w)&&CONTENT[o.w];}).map(function(o){return '<option value="'+o.w+'"'+(o.w===_cw?' selected':'')+'>Week '+o.w+' · '+o.t+'</option>';}).join('')+'</select><button class="btn ghost" onclick="jumpToWeek()">Set</button></div></div>';
   h+='<button class="btn ghost block" onclick="resetAll()" style="margin-top:6px;color:var(--muted)">Reset all progress</button>';
   document.getElementById("v-progress").innerHTML=h;
+}
+function jumpToWeek(){
+  var el=document.getElementById("jumpW");if(!el)return;var w=Number(el.value);if(!w)return;
+  var prev=OUTLINE.filter(function(o){return isMain(o.w)&&o.w<w;}).map(function(o){return o.w;});
+  if(!confirm("Mark Week"+(prev.length===1?" ":"s ")+(prev.length?prev.join(", "):"\u2014 none")+" complete and start you on Week "+w+"?\n\nFlashcards from those weeks get added to your review deck. Nothing else is erased."))return;
+  prev.forEach(function(x){state.done[x]=true;if(!state.best[x])state.best[x]=100;if(CONTENT[x])seedCards(x);});
+  Object.keys(state.done).map(Number).forEach(function(x){if(isMain(x)&&x>=w)delete state.done[x];});
+  state.step=0;state.focusDate=null;state._undo=null;
+  save();renderStreak();toast("You\u2019re on Week "+w+" \ud83c\udf38");go("home");
 }
 function resetAll(){if(confirm("Reset all progress, streaks, and flashcard memory? This can’t be undone.")){state=JSON.parse(JSON.stringify(DEFAULT));save();renderStreak();toast("Progress reset");go("home");}}
 
@@ -1497,6 +1508,5 @@ function applyFuri(){var off=state.furi===false; document.body.classList.toggle(
 document.addEventListener('click',function(e){var t=e.target;var gw=t&&t.closest?t.closest('.gw'):null;if(gw){var ru=gw.querySelector&&gw.querySelector('ruby');if(ru)ru.classList.add('peek');showGloss(gw);return;}var r=t&&t.closest?t.closest('ruby'):null;if(r){r.classList.toggle('peek');return;}hideGloss();});
 applyTheme(state.theme);renderStreak();applyFuri();renderHome();
 </script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){});});}</script>
 </body>
 </html>
