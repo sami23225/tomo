@@ -1,0 +1,161 @@
+/* tomo-theme.css — premium facelift for the Tomo study app.
+   Inspired by theleap.co: warm greige base, espresso ink, electric-lime accent,
+   editorial serif headings + clean grotesque UI, outlined pill buttons, lively motion.
+   Loaded AFTER the app's inline <style> so these rules win. Add before </head>:
+     <link rel="stylesheet" href="tomo-theme.css"> */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Shippori+Mincho:wght@400;600;700&display=swap');
+
+/* ---------- palette (light) ---------- */
+:root{
+  --bg:#F0EDEE; --surface:#FBFAF7; --surface-2:#ECE6DF; --surface-3:#F5F1EB;
+  --ink:#3E2317; --muted:#8B7C71; --faint:#C4B5A9; --line:#E5DCD1;
+  --rose:#3E2317;            /* "dark brand" → espresso: keeps white-on-dark contrast */
+  --rose-soft:#F1F6CE;       /* pale lime for chips / icon backdrops */
+  --rose-deep:#2A160C;
+  --indigo:#6E6057; --green:#5C8D6F; --green-soft:#E8F0E6;
+  --amber:#C2974E; --red:#CF5A5A; --red-soft:#F8E7E6; --seal:#C0402F;
+  --lime:#ECF956; --lime-2:#DCEB4A;
+  --hero-grad:linear-gradient(135deg,#EFEBE5 0%,#E7ECBE 52%,#DCF25E 128%);
+  --shadow:0 1px 2px rgba(62,35,23,.05),0 6px 20px rgba(62,35,23,.07);
+  --shadow-lg:0 14px 42px rgba(62,35,23,.15);
+  --ui:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Fraunces','Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  --jp:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic',sans-serif;
+}
+
+html,body{ background:var(--bg); color:var(--ink); font-family:var(--ui); }
+body{ background-image:radial-gradient(1200px 600px at 90% -5%, rgba(220,242,94,.20), transparent 60%); background-attachment:fixed; }
+
+/* ---------- typography ---------- */
+.brand h1{ font-family:var(--serif); font-weight:500; letter-spacing:0; }
+h2.title, .title{ font-family:var(--serif); font-weight:400; letter-spacing:-.015em; }
+.hero h2, .vbig, .kbig, .fc-front .big, .qq, .result .big{ font-family:var(--serif); font-weight:500; }
+.eyebrow, .sec .lab, .phase-h span, .wknum small{ font-family:var(--ui); }
+
+/* ---------- header / brand ---------- */
+header{ background:rgba(240,237,238,.72); border-bottom:1px solid var(--line); }
+.logo{ background:var(--ink); color:#fff; box-shadow:0 4px 14px rgba(62,35,23,.28); }
+.brand .sub{ color:var(--muted); }
+.streak{ background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); }
+.streak .flame{ color:var(--seal); }
+.furiBtn{ background:var(--ink); color:#fff; box-shadow:0 3px 10px rgba(62,35,23,.3); }
+.furiBtn.off{ background:var(--surface); color:var(--faint); border:1px solid var(--line); box-shadow:none; }
+
+/* ---------- hero (light greige→lime, dark ink text) ---------- */
+.hero{ color:var(--ink); border:1px solid rgba(62,35,23,.14); box-shadow:var(--shadow-lg); }
+.hero .eyebrow{ color:#6c5a2a; }
+.hero h2{ color:var(--ink); }
+.hero p{ color:rgba(62,35,23,.72); }
+.hero .kana{ color:rgba(62,35,23,.09); animation:tomoFloat 9s ease-in-out infinite; }
+
+/* ---------- buttons: outlined lime pills with a chunky press ---------- */
+.btn, .btn.rose{
+  background:var(--lime); color:var(--ink);
+  border:1.6px solid var(--ink); border-radius:999px;
+  box-shadow:0 3px 0 rgba(62,35,23,.92); text-transform:uppercase;
+  letter-spacing:.045em; font-family:var(--ui); font-weight:600;
+  transition:transform .12s cubic-bezier(.3,1.4,.5,1), box-shadow .12s;
+}
+.btn:active, .btn.rose:active{ transform:translateY(3px); box-shadow:0 0 0 rgba(62,35,23,.92); }
+.btn.ghost{ background:var(--surface); color:var(--ink); border:1.6px solid var(--ink); box-shadow:0 3px 0 rgba(62,35,23,.5); }
+.btn.ghost:active{ transform:translateY(3px); box-shadow:0 0 0 rgba(62,35,23,.5); }
+.tgo{ background:var(--rose-soft); color:var(--ink); border:1px solid rgba(62,35,23,.28); border-radius:999px; font-weight:600; }
+.tgo:active{ transform:scale(.95); }
+
+/* ---------- surfaces, progress, accents ---------- */
+.card{ border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); }
+.stat{ border-radius:18px; }
+.stat .num{ font-family:var(--serif); font-weight:500; }
+.stat .num.rose{ color:var(--seal); }
+.mini .ico, .spk, .kcell span{ }
+.track i, .qbar i{ background:linear-gradient(90deg,var(--lime-2),var(--lime)); }
+.track i.g{ background:linear-gradient(90deg,#7FB98F,var(--green)); }
+.when{ border-left:3px solid var(--lime-2); background:var(--surface-3); }
+.how, .fc-back{ background:#2A160C; color:#F4EDE4; }
+.how code, .fc-back .rd{ color:#DCEB6A; }
+.opt.correct, .fb.ok, .ex.ok{ background:var(--green-soft); }
+.wknum.cur{ background:var(--ink); color:#fff; }
+.wknum.done{ background:var(--green); }
+.pblank{ color:var(--seal); }
+.btile.in, .lbtn.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
+.sw.on{ border-color:var(--ink); box-shadow:0 0 0 1.6px var(--ink); }
+
+/* ---------- bottom nav (warm glass) ---------- */
+nav{ background:rgba(251,250,247,.82); border-top:1px solid var(--line); }
+.tab.on{ color:var(--ink); }
+.tab.on svg{ transform:scale(1.12); transition:transform .2s cubic-bezier(.3,1.5,.5,1); }
+
+/* ---------- tap-to-gloss (words + tooltip) ---------- */
+.tgw{ cursor:pointer; border-bottom:1.5px dotted rgba(62,35,23,.4); transition:background .15s, border-color .15s; border-radius:3px; }
+.tgw:hover{ background:var(--rose-soft); }
+.tgw:active{ background:var(--lime); }
+#tgtip{
+  position:fixed; z-index:10000; display:none; max-width:74vw;
+  background:var(--ink); color:#fff; padding:9px 13px; border-radius:12px;
+  font-family:var(--ui); font-size:13.5px; line-height:1.45; box-shadow:0 12px 30px rgba(0,0,0,.28);
+  opacity:0; transform:translateY(4px) scale(.96); transition:opacity .16s, transform .16s;
+  pointer-events:none;
+}
+#tgtip.show{ opacity:1; transform:translateY(0) scale(1); }
+#tgtip .tgr{ color:var(--lime); font-weight:700; margin-right:7px; }
+#tgtip .tgm{ color:#fff; }
+
+/* ---------- confetti (celebration) ---------- */
+.tomo-confetti{ position:fixed; top:-12px; width:10px; height:14px; z-index:10001; pointer-events:none; border-radius:2px; will-change:transform,opacity; }
+
+/* ---------- motion ---------- */
+@keyframes tomoRise{ from{ opacity:0; transform:translateY(12px) scale(.985); } to{ opacity:1; transform:none; } }
+@keyframes tomoFloat{ 0%,100%{ transform:translateY(0) rotate(0); } 50%{ transform:translateY(-10px) rotate(-3deg); } }
+@keyframes tomoPop{ 0%{ transform:scale(.6); opacity:0; } 60%{ transform:scale(1.12); } 100%{ transform:scale(1); opacity:1; } }
+@keyframes tomoShimmer{ 0%{ background-position:-420px 0; } 100%{ background-position:420px 0; } }
+@keyframes tomoConfetti{ 0%{ transform:translateY(0) rotate(0); opacity:1; } 100%{ transform:translateY(102vh) rotate(680deg); opacity:.9; } }
+
+/* staggered entrance for the active view's top-level blocks */
+.view.active > *{ animation:tomoRise .5s cubic-bezier(.2,.75,.2,1) both; }
+.view.active > *:nth-child(1){ animation-delay:.02s; }
+.view.active > *:nth-child(2){ animation-delay:.07s; }
+.view.active > *:nth-child(3){ animation-delay:.12s; }
+.view.active > *:nth-child(4){ animation-delay:.17s; }
+.view.active > *:nth-child(5){ animation-delay:.22s; }
+.view.active > *:nth-child(6){ animation-delay:.27s; }
+.view.active > *:nth-child(n+7){ animation-delay:.30s; }
+
+/* tactile hover lift on desktop */
+@media (hover:hover) and (min-width:740px){
+  .card:not(.hero), .unit.ready, .mini, .ktile, .stat, .todo{ transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s; }
+  .card:not(.hero):hover, .unit.ready:hover, .mini:hover, .ktile:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+}
+.tgo, .spk, .grade, .opt, .btile, .lbtn{ transition:transform .12s cubic-bezier(.3,1.4,.5,1), background .15s, border-color .15s; }
+
+/* respect reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *, .view.active > *, .hero .kana{ animation:none !important; transition:none !important; }
+}
+
+/* ---------- auto dark mode ---------- */
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#171210; --surface:#241C16; --surface-2:#2F251C; --surface-3:#1F1712;
+    --ink:#F3ECE3; --muted:#A99A8C; --faint:#6F6053; --line:#3A2C22;
+    --rose:#ECF956; --rose-soft:#2C2A15; --rose-deep:#ECF956;
+    --hero-grad:linear-gradient(135deg,#241C16 0%,#3A3016 58%,#5E5C12 128%);
+    --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 26px rgba(0,0,0,.5);
+    --shadow-lg:0 18px 46px rgba(0,0,0,.6);
+  }
+  body{ background-image:radial-gradient(1200px 600px at 90% -5%, rgba(220,242,94,.10), transparent 60%); }
+  header{ background:rgba(23,18,16,.78); } nav{ background:rgba(23,18,16,.82); }
+  .logo{ background:var(--lime); color:#1a1410; }
+  .hero{ color:#F3ECE3; border-color:rgba(255,255,255,.08); }
+  .hero .eyebrow{ color:#d7e06a; } .hero p{ color:rgba(243,236,227,.75); }
+  .hero .kana{ color:rgba(255,255,255,.06); }
+  .btn, .btn.rose{ background:var(--lime); color:#1a1410; border-color:#0f0b08; box-shadow:0 3px 0 rgba(0,0,0,.6); }
+  .btn.ghost{ background:var(--surface); color:var(--ink); border-color:var(--ink); }
+  .how, .fc-back{ background:#0F0B08; color:#F4EDE4; }
+  .furiBtn{ background:var(--lime); color:#1a1410; }
+  /* keep contrast where white text used to sit on --rose */
+  .wknum.cur{ background:var(--lime); color:#1a1410; }
+  .btile.in, .lbtn.on{ background:var(--lime); color:#1a1410; border-color:var(--lime); }
+  .tab.on{ color:var(--lime); }
+  #tgtip{ background:#0F0B08; } #tgtip .tgm{ color:#F4EDE4; }
+}
