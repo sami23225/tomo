@@ -13,9 +13,12 @@
   --rose:#3E2317;            /* "dark brand" → espresso: keeps white-on-dark contrast */
   --rose-soft:#F1F6CE;       /* pale lime for chips / icon backdrops */
   --rose-deep:#2A160C;
-  --indigo:#6E6057; --green:#5C8D6F; --green-soft:#E8F0E6;
-  --amber:#C2974E; --red:#CF5A5A; --red-soft:#F8E7E6; --seal:#C0402F;
+  --indigo:#2E90D8; --green:#5F9E77; --green-soft:#E7F1D9;
+  --amber:#E0A93E; --red:#E4694F; --red-soft:#FBE3DC; --seal:#C0402F;
   --lime:#ECF956; --lime-2:#DCEB4A;
+  /* theleap.co pastel multi-accent set */
+  --sky:#29A7FF; --sky-soft:#C3E5FF; --butter:#FCE29D; --butter-ink:#8A6A1E;
+  --lilac:#DAC7FF; --lilac-soft:#EFD8F0; --coral:#FB7259; --leaf:#76C86E; --leaf-soft:#E4F1CF;
   --hero-grad:linear-gradient(135deg,#EFEBE5 0%,#E7ECBE 52%,#DCF25E 128%);
   --shadow:0 1px 2px rgba(62,35,23,.05),0 6px 20px rgba(62,35,23,.07);
   --shadow-lg:0 14px 42px rgba(62,35,23,.15);
@@ -80,6 +83,23 @@ header{ background:rgba(240,237,238,.72); border-bottom:1px solid var(--line); }
 .pblank{ color:var(--seal); }
 .btile.in, .lbtn.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
 .sw.on{ border-color:var(--ink); box-shadow:0 0 0 1.6px var(--ink); }
+
+/* ---------- playful multi-accent (theleap.co pastels) ---------- */
+.mini .ico{ background:var(--leaf-soft); color:#3f6b3f; }
+.mini .ico.g{ background:var(--sky-soft); color:#1c5b86; }
+.mini .ico.i{ background:var(--lilac-soft); color:#6b4b8a; }
+.stat .num.rose{ color:var(--coral); }
+.stat .num.green{ color:var(--leaf); }
+.stat .num.indigo{ color:var(--sky); }
+.sec .lab{ color:var(--sky); } .sec .lab .d{ background:var(--sky); }
+.g-again{ background:var(--coral); color:#fff; }
+.g-hard{ background:var(--butter); color:var(--butter-ink); }
+.g-good{ background:var(--leaf); color:#fff; }
+.g-easy{ background:var(--sky); color:#fff; }
+.pill.green{ background:var(--leaf-soft); color:#3f6b3f; }
+.kcell span{ color:var(--sky); }
+.ktile.kn{ border-color:var(--leaf); background:var(--leaf-soft); }
+.leech{ background:var(--lilac-soft); color:#6b4b8a; }
 
 /* ---------- bottom nav (warm glass) ---------- */
 nav{ background:rgba(251,250,247,.82); border-top:1px solid var(--line); }

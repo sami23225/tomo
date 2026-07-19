@@ -8,6 +8,14 @@
   'use strict';
   if (window.__tomoEnhance) return; window.__tomoEnhance = true;
 
+  // Inject the premium theme stylesheet, appended LAST so its rules win the cascade
+  // over the app's inline <style> (equal specificity → later source wins).
+  if (!document.getElementById('tomo-theme-link')) {
+    var _l = document.createElement('link');
+    _l.id = 'tomo-theme-link'; _l.rel = 'stylesheet'; _l.href = 'tomo-theme.css';
+    (document.head || document.documentElement).appendChild(_l);
+  }
+
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ---------------- dictionary (from the app's own data) ---------------- */
