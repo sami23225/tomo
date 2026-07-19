@@ -179,3 +179,57 @@ nav{ background:rgba(251,250,247,.82); border-top:1px solid var(--line); }
   .tab.on{ color:var(--lime); }
   #tgtip{ background:#0F0B08; } #tgtip .tgm{ color:#F4EDE4; }
 }
+
+/* ================= v2 structural redesign ================= */
+.app{ padding-bottom:126px !important; }
+
+/* floating pill bottom-nav with a sliding lime indicator */
+nav{ position:fixed !important; left:50% !important; right:auto !important; transform:translateX(-50%);
+  bottom:14px !important; width:min(680px,92vw) !important; max-width:none !important; border-radius:999px !important;
+  border:1.6px solid var(--ink) !important; background:rgba(251,250,247,.93) !important;
+  box-shadow:0 12px 30px rgba(62,35,23,.20) !important; padding:7px 10px !important; overflow:visible; }
+.tab{ position:relative; z-index:1; border-radius:999px !important; }
+.tab.on{ color:var(--ink) !important; }
+.tomo-navdot{ position:absolute; z-index:0; top:6px; height:calc(100% - 12px); background:var(--lime);
+  border:1.6px solid var(--ink); border-radius:999px; box-shadow:0 2px 0 rgba(62,35,23,.9);
+  transition:left .34s cubic-bezier(.5,1.5,.4,1), width .34s cubic-bezier(.5,1.5,.4,1); pointer-events:none; }
+
+/* showpiece hero */
+#v-home .card.hero{ border-radius:30px !important; padding:32px 28px 28px !important; min-height:214px;
+  background:linear-gradient(120deg,#EFEBE5 0%,#E7ECBE 52%,#DCF25E 128%) !important; position:relative; overflow:hidden;
+  border:1.6px solid rgba(62,35,23,.18) !important; box-shadow:0 16px 44px rgba(62,35,23,.15) !important; color:var(--ink) !important; }
+#v-home .card.hero h2{ font-size:clamp(27px,4.6vw,40px) !important; line-height:1.08; letter-spacing:-.02em; margin:6px 0 8px !important; }
+#v-home .card.hero .eyebrow{ color:#7a6420 !important; }
+#v-home .card.hero p{ color:rgba(62,35,23,.72) !important; }
+#v-home .card.hero .kana{ color:rgba(62,35,23,.10) !important; }
+#v-home .card.hero::before{ content:''; position:absolute; width:360px; height:360px; right:-90px; top:-130px;
+  background:radial-gradient(circle, rgba(41,167,255,.30), transparent 62%); animation:tomoAurora 13s ease-in-out infinite; pointer-events:none; }
+#v-home .card.hero::after{ content:''; position:absolute; width:300px; height:300px; left:-100px; bottom:-150px;
+  background:radial-gradient(circle, rgba(218,199,255,.36), transparent 62%); animation:tomoAurora 17s ease-in-out infinite reverse; pointer-events:none; }
+.tomo-sticker{ position:absolute; pointer-events:none; z-index:2; }
+.tomo-wk{ position:relative; z-index:2; margin-top:16px; }
+.tomo-wk .lbl{ font-size:11px; font-weight:700; letter-spacing:.06em; color:rgba(62,35,23,.72); margin-bottom:6px; text-transform:uppercase; }
+.tomo-wk .bar{ height:10px; border-radius:99px; background:rgba(62,35,23,.12); border:1.4px solid rgba(62,35,23,.5); overflow:hidden; }
+.tomo-wk .bar i{ display:block; height:100%; background:var(--lime); border-right:1.5px solid var(--ink); border-radius:99px; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+
+/* session items as colorful sticker cards */
+#v-home .todo{ border-radius:18px !important; border:1.6px solid rgba(62,35,23,.16) !important; box-shadow:0 3px 0 rgba(62,35,23,.10) !important; padding:14px 16px !important; align-items:center; gap:14px !important; transition:transform .15s ease, box-shadow .15s ease; }
+#v-home .todo:hover{ transform:translateY(-2px); box-shadow:0 6px 0 rgba(62,35,23,.12) !important; }
+.tomo-ic{ order:0; width:46px; height:46px; flex:0 0 46px; border-radius:15px; display:flex; align-items:center; justify-content:center; font-size:23px; border:1.6px solid var(--ink); box-shadow:0 2px 0 rgba(62,35,23,.9); }
+#v-home .todo .ttx{ order:1; } #v-home .todo .tcheck{ order:2; } #v-home .todo .tgo{ order:3; }
+#v-home .todo .ttx b{ font-size:15.5px !important; letter-spacing:-.01em; }
+
+@keyframes tomoAurora{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-24px,18px) scale(1.16); } }
+@keyframes tomoSpin{ to{ transform:rotate(360deg); } }
+@keyframes tomoBob{ 0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); } 50%{ transform:translateY(-8px) rotate(var(--r,0deg)); } }
+
+@media (prefers-color-scheme:dark){
+  nav{ background:rgba(23,18,16,.9) !important; }
+  /* keep the hero a bright lime card with dark text even in dark mode */
+  #v-home .card.hero{ color:#3E2317 !important; }
+  #v-home .card.hero .eyebrow{ color:#7a6420 !important; }
+  #v-home .card.hero p{ color:rgba(62,35,23,.72) !important; }
+}
+@media (prefers-reduced-motion:reduce){
+  #v-home .card.hero::before, #v-home .card.hero::after, .tomo-sticker{ animation:none !important; }
+}

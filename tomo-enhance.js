@@ -162,11 +162,65 @@
     if (res) { res.setAttribute('data-celebrated', '1'); setTimeout(celebrate, 150); }
   }
 
+  /* ---------------- structural redesign: nav indicator, hero, session icons ---------------- */
+  function placeDot() {
+    var nav = document.querySelector('nav'); if (!nav) return;
+    var dot = nav.querySelector('.tomo-navdot'), on = nav.querySelector('.tab.on'); if (!dot || !on) return;
+    var nr = nav.getBoundingClientRect(), r = on.getBoundingClientRect();
+    if (r.width) { dot.style.left = (r.left - nr.left) + 'px'; dot.style.width = r.width + 'px'; }
+  }
+  function navIndicator() {
+    var nav = document.querySelector('nav'); if (!nav) return;
+    var dot = nav.querySelector('.tomo-navdot');
+    if (!dot) {
+      dot = document.createElement('div'); dot.className = 'tomo-navdot'; nav.insertBefore(dot, nav.firstChild);
+      if (!nav.__tgnav) { nav.__tgnav = true; nav.addEventListener('click', function () { setTimeout(placeDot, 20); }); addEventListener('resize', placeDot); }
+    }
+    placeDot();
+  }
+  var SVG_STAR = '<svg width="44" height="44" viewBox="0 0 24 24" fill="#ECF956" stroke="#3E2317" stroke-width="1.4"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 6.8L12 16l-6.4 4 2.2-6.8L2 8.9h7.6z"/></svg>';
+  var SVG_HEART = '<svg width="30" height="30" viewBox="0 0 24 24" fill="#FB7259" stroke="#3E2317" stroke-width="1.5"><path d="M12 21s-7-4.5-9.3-8.1C1 10 2 6.5 5.2 6.1 7 5.9 8.4 7 12 9.5 15.6 7 17 5.9 18.8 6.1 22 6.5 23 10 21.3 12.9 19 16.5 12 21 12 21z"/></svg>';
+  var SVG_SPARK = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#29A7FF" stroke="#3E2317" stroke-width="1.3"><path d="M12 2c.6 4.5 2.9 6.8 7.4 7.4-4.5.6-6.8 2.9-7.4 7.4-.6-4.5-2.9-6.8-7.4-7.4C9.1 8.8 11.4 6.5 12 2z"/></svg>';
+  function heroExtras() {
+    var hero = document.querySelector('#v-home .card.hero'); if (!hero || hero.querySelector('.tomo-wk')) return;
+    function sticker(svg, css) { var d = document.createElement('div'); d.className = 'tomo-sticker'; d.style.cssText = css; d.innerHTML = svg; hero.appendChild(d); }
+    if (!reduce) {
+      sticker(SVG_STAR, 'top:20px; right:150px; --r:-14deg; animation:tomoBob 5s ease-in-out infinite;');
+      sticker(SVG_HEART, 'top:96px; right:96px; --r:12deg; animation:tomoBob 6s ease-in-out infinite .3s;');
+      sticker(SVG_SPARK, 'bottom:34px; right:190px; animation:tomoSpin 9s linear infinite;');
+    }
+    var cw = 1, tot = 19;
+    try { cw = currentWeek().w; tot = Math.max.apply(null, OUTLINE.filter(function (o) { return isMain(o.w); }).map(function (o) { return o.w; })); } catch (e) {}
+    var wk = document.createElement('div'); wk.className = 'tomo-wk';
+    wk.innerHTML = '<div class="lbl">Week ' + cw + ' of ' + tot + '</div><div class="bar"><i style="width:0"></i></div>';
+    hero.appendChild(wk);
+    var pct = Math.round(cw / tot * 100); setTimeout(function () { var i = wk.querySelector('i'); if (i) i.style.width = pct + '%'; }, 150);
+  }
+  function iconFor(t) {
+    t = (t || '').toLowerCase();
+    if (/review|flashcard/.test(t)) return ['🃏', '#EFD8F0'];
+    if (/lesson/.test(t) && !/particle/.test(t)) return ['📖', '#C3E5FF'];
+    if (/listen|passage/.test(t)) return ['🎧', '#E4F1CF'];
+    if (/particle/.test(t)) return ['🧩', '#FCE29D'];
+    if (/write|sentence|speak/.test(t)) return ['✍️', '#FBD7CE'];
+    return ['⭐', '#F1F6CE'];
+  }
+  function sessionIcons() {
+    document.querySelectorAll('#v-home .todo').forEach(function (td) {
+      if (td.querySelector('.tomo-ic')) return;
+      var title = (td.querySelector('.ttx b') || td).textContent || '';
+      var m = iconFor(title);
+      var ic = document.createElement('div'); ic.className = 'tomo-ic'; ic.textContent = m[0]; ic.style.background = m[1];
+      td.insertBefore(ic, td.firstChild);
+    });
+  }
+  function redesign() { try { navIndicator(); heroExtras(); sessionIcons(); } catch (e) {} }
+
   /* ---------------- observe renders ---------------- */
   var mo, t;
   function run() {
     if (mo) mo.disconnect();
-    try { glossActive(); polish(); } catch (e) {}
+    try { glossActive(); polish(); redesign(); } catch (e) {}
     if (mo) mo.observe(document.querySelector('.app') || document.body, { childList: true, subtree: true });
   }
   function start() {
