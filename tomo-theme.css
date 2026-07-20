@@ -233,3 +233,56 @@ nav{ position:fixed !important; left:50% !important; right:auto !important; tran
 @media (prefers-reduced-motion:reduce){
   #v-home .card.hero::before, #v-home .card.hero::after, .tomo-sticker{ animation:none !important; }
 }
+
+/* ================= v3 full styling pass (header + all pages) ================= */
+/* header */
+header{ background:rgba(240,237,238,.84) !important; border-bottom:1.5px solid rgba(62,35,23,.16) !important; }
+.brand h1{ font-size:20px !important; letter-spacing:0; }
+.brand .sub{ letter-spacing:.22em !important; color:var(--muted) !important; }
+.logo{ border:1.6px solid var(--ink) !important; box-shadow:0 3px 0 rgba(62,35,23,.9) !important; }
+.streak{ background:var(--lime) !important; color:var(--ink) !important; border:1.6px solid var(--ink) !important; box-shadow:0 2px 0 rgba(62,35,23,.9) !important; font-weight:800 !important; border-radius:999px !important; }
+.streak .flame{ color:var(--seal) !important; }
+.furiBtn{ border:1.6px solid var(--ink) !important; box-shadow:0 2px 0 rgba(62,35,23,.9) !important; }
+.furiBtn.off{ box-shadow:none !important; }
+/* view titles + nav bits */
+.title, h2.title{ font-size:clamp(24px,3.4vw,30px) !important; }
+.back{ display:inline-flex !important; align-items:center; gap:6px; background:var(--surface) !important; border:1.5px solid rgba(62,35,23,.3) !important; border-radius:999px !important; padding:7px 14px !important; font-weight:600 !important; box-shadow:0 2px 0 rgba(62,35,23,.5) !important; color:var(--ink) !important; }
+.sec .lab{ color:var(--sky) !important; } .sec .lab .d{ background:var(--sky) !important; }
+/* Learn: week path */
+.unit{ border-radius:18px !important; border:1.6px solid rgba(62,35,23,.16) !important; box-shadow:0 3px 0 rgba(62,35,23,.09) !important; }
+.unit.ready:hover{ transform:translateY(-2px) !important; box-shadow:0 6px 0 rgba(62,35,23,.11) !important; }
+.wknum{ border:1.5px solid var(--ink) !important; border-radius:14px !important; }
+.wknum.cur{ background:var(--ink) !important; color:#fff !important; } .wknum.done{ background:var(--leaf) !important; }
+.phase-h b{ font-family:var(--serif) !important; font-size:19px !important; }
+.unit .info .jpt{ color:var(--seal) !important; }
+/* Lesson */
+.when{ border-left:4px solid var(--lime) !important; border-radius:0 14px 14px 0 !important; }
+.how{ border-radius:16px !important; }
+.ex{ border-radius:16px !important; border:1.5px solid rgba(62,35,23,.14) !important; box-shadow:0 2px 0 rgba(62,35,23,.06) !important; }
+.spk{ background:var(--lime) !important; border:1.5px solid var(--ink) !important; box-shadow:0 2px 0 rgba(62,35,23,.9) !important; }
+.lbtn{ border-radius:999px !important; border:1.5px solid rgba(62,35,23,.34) !important; }
+.lbtn.on{ background:var(--ink) !important; color:#fff !important; border-color:var(--ink) !important; }
+.lsel{ border-radius:12px !important; border:1.5px solid rgba(62,35,23,.34) !important; }
+.pnote{ border-radius:12px !important; } .pnote .jp{ color:var(--seal) !important; }
+.warn{ border-radius:12px !important; }
+/* Practice quiz */
+.opt{ border-radius:15px !important; border:1.6px solid rgba(62,35,23,.18) !important; box-shadow:0 3px 0 rgba(62,35,23,.08) !important; }
+.opt:active{ transform:translateY(2px) !important; box-shadow:0 0 0 rgba(62,35,23,.08) !important; }
+.opt.correct{ border-color:var(--leaf) !important; } .opt.wrong{ border-color:var(--red) !important; }
+.qbar i{ background:linear-gradient(90deg,var(--lime-2),var(--lime)) !important; }
+.sd.cur{ background:var(--lime) !important; border:1.5px solid var(--ink); } .sd.done{ background:var(--leaf) !important; }
+.result .big{ font-family:var(--serif) !important; }
+/* Cards / flashcards */
+.fc-face{ border-radius:24px !important; border:1.6px solid rgba(62,35,23,.16) !important; }
+.fc-back{ background:#2A160C !important; }
+.grade{ border-radius:14px !important; border:1.5px solid var(--ink) !important; box-shadow:0 3px 0 rgba(62,35,23,.5) !important; }
+.grade:active{ transform:translateY(2px) !important; box-shadow:0 0 0 rgba(62,35,23,.5) !important; }
+.g-again{ background:var(--coral) !important; } .g-hard{ background:var(--butter) !important; color:var(--butter-ink) !important; } .g-good{ background:var(--leaf) !important; } .g-easy{ background:var(--sky) !important; }
+/* Kanji */
+.ktile{ border-radius:16px !important; border:1.6px solid rgba(62,35,23,.16) !important; box-shadow:0 3px 0 rgba(62,35,23,.09) !important; }
+.ktile.kn{ border-color:var(--leaf) !important; background:var(--leaf-soft) !important; }
+.kcell{ border-radius:14px !important; } .kcell span{ color:var(--sky) !important; }
+/* Progress */
+.stat{ border-radius:18px !important; } .stat .num{ font-family:var(--serif) !important; }
+.track i{ background:linear-gradient(90deg,var(--lime-2),var(--lime)) !important; } .track i.g{ background:var(--leaf) !important; }
+.stamp.on{ background:var(--seal) !important; border-color:var(--seal) !important; }
