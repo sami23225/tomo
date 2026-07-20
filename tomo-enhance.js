@@ -172,9 +172,14 @@
   function navIndicator() {
     var nav = document.querySelector('nav'); if (!nav) return;
     var dot = nav.querySelector('.tomo-navdot');
-    if (!dot) {
-      dot = document.createElement('div'); dot.className = 'tomo-navdot'; nav.insertBefore(dot, nav.firstChild);
-      if (!nav.__tgnav) { nav.__tgnav = true; nav.addEventListener('click', function () { setTimeout(placeDot, 20); }); addEventListener('resize', placeDot); }
+    if (!dot) { dot = document.createElement('div'); dot.className = 'tomo-navdot'; nav.insertBefore(dot, nav.firstChild); }
+    if (!nav.__tgnav) {
+      nav.__tgnav = true;
+      nav.addEventListener('click', function () { setTimeout(placeDot, 20); });
+      addEventListener('resize', placeDot);
+      // reposition once fonts load (label widths change) and after layout settles
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeDot).catch(function () {});
+      setTimeout(placeDot, 300); setTimeout(placeDot, 900);
     }
     placeDot();
   }
