@@ -16,6 +16,17 @@
     (document.head || document.documentElement).appendChild(_l);
   }
 
+  // Load the 7-day-per-unit engine + its grammar content (mutates window.TOMO_UNITS,
+  // so order between these two doesn't matter). Injected here to avoid editing index.html.
+  ['tomo-units.js', 'tomo-daily.js'].forEach(function (src) {
+    var id = 'ld-' + src;
+    if (!document.getElementById(id)) {
+      var sc = document.createElement('script');
+      sc.id = id; sc.src = src; sc.defer = true;
+      (document.body || document.documentElement).appendChild(sc);
+    }
+  });
+
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ---------------- dictionary (from the app's own data) ---------------- */
