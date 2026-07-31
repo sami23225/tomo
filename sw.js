@@ -1,4 +1,4 @@
-const CACHE='tomo-v40';
+const CACHE='tomo-v41';
 const ASSETS=['./','./index.html','./manifest.json','./icon-180.png','./icon-192.png','./icon-512.png','./tomo-theme.css','./tomo-enhance.js','./tomo-sync.js','./tomo-daily.js','./tomo-units.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.map(k=>k!==CACHE?caches.delete(k):null))).then(()=>self.clients.claim()));});

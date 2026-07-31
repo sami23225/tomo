@@ -781,4 +781,448 @@
       }
     ]
   };
+
+  /* ===================== WEEK 5 — Plain past (た-form) ===================== */
+  U[5] = {
+    title: 'Plain past (た-form)',
+    days: [
+      {
+        focus: 'The た-form is the て-form’s twin',
+        sub: 'Casual past, for free',
+        particle: 'は',
+        read: { k: 0, task: 'Read the passage with the translation open' },
+        produce: 'Say three things you did today, casually.',
+        lesson: { min: 5, secs: [
+          { t: 'p', lab: 'This week', h: 'You already know most of this',
+            body: ['The plain past — the <b>た-form</b> — is built exactly like the て-form you drilled, with one swap: <b>て → た</b> and <b>で → だ</b>. Every sound-change rule carries over. This is the easiest week to earn.'] },
+          { t: 'pat', lab: 'The rule', h: 'Take the て-form, swap て→た', formula: ['て-form', '→', 'た-form (past)'], mean: 'Plain past = “did ~.”',
+            ex: [
+              { jp: '昨日、寿司を食べた。', rom: 'Kinō, sushi o tabeta.', en: 'I ate sushi yesterday.', bd: [['食べた', '食べて → 食べた']] },
+              { jp: 'もう帰った。', rom: 'Mō kaetta.', en: 'I already went home.', bd: [['帰った', '帰って → 帰った']] },
+              { jp: '映画を見た。', rom: 'Eiga o mita.', en: 'I watched a movie.', bd: [['見た', '見て → 見た']] }
+            ] },
+          { t: 'why', lab: 'Why it works', h: 'One shape, two tails',
+            body: ['The て-form and た-form share the same stem; only the final vowel differs (て/た, で/だ). So the moment you can say 飲んで, you can say <b>飲んだ</b>. Learn the て-form once, collect the past for free.'] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>て → た, で → だ.</b> If you can make the て-form, you can already make the past.'] },
+          { t: 'try', lab: 'Your turn', h: 'Make the past', items: ['食べる → (past)', '見る →', '行く →', 'する →', '来る →'], note: 'Via the て-form: 〜て → 〜た. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'う・つ・る → った',
+        sub: 'Past of the first u-group',
+        particle: 'を',
+        read: { k: 0, task: 'Listen with the text hidden, then check' },
+        produce: 'Say three things you bought or did (買う/待つ/帰る), in the past.',
+        lesson: { min: 5, secs: [
+          { t: 'p', lab: 'Today', h: 'The って group, in the past',
+            body: ['Same group as て-form Day 2 — う・つ・る — now with た: <b>った</b>.'] },
+          { t: 'pat', lab: 'The rule', h: 'う・つ・る → った', formula: ['〜う / つ / る', '→', 'った'], mean: 'Small っ, then た.',
+            ex: [
+              { jp: '切符を買った。', rom: 'Kippu o katta.', en: 'I bought a ticket.', bd: [['買った', '買う → 買った']] },
+              { jp: '30分待った。', rom: 'Sanjuppun matta.', en: 'I waited 30 minutes.', bd: [['待った', '待つ → 待った']] },
+              { jp: '早く帰った。', rom: 'Hayaku kaetta.', en: 'I went home early.', bd: [['帰った', '帰る → 帰った (u-verb!)']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'The 帰る trap again',
+            items: [{ x: '帰た', o: '帰った', n: '帰る is a u-verb → 帰った, just like its て-form 帰って.' }] },
+          { t: 'try', lab: 'Your turn', h: 'Make the past', items: ['買う →', '待つ →', '作る →', '帰る →', '取る →'], note: 'All → った. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'んだ · いた · いだ (and 行った)',
+        sub: 'The rest of the u-verbs, in the past',
+        particle: 'で',
+        read: { k: 1, task: 'Shadow the passage — a half-second behind' },
+        produce: 'Say three past actions using 飲む/読む/書く/泳ぐ.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'The nasal and k/g groups',
+            body: ['む・ぶ・ぬ → <b>んだ</b>; く → <b>いた</b>, ぐ → <b>いだ</b>. And 行く keeps its rebel past: <b>行った</b>.'] },
+          { t: 'pat', lab: 'The rules', h: 'んだ · いた · いだ', formula: ['む/ぶ/ぬ→んだ', '·', 'く→いた · ぐ→いだ'], mean: 'Same as the て-form, with た/だ:',
+            ex: [
+              { jp: 'ビールを飲んだ。', rom: 'Bīru o nonda.', en: 'I drank a beer.', bd: [['飲んだ', '飲む → 飲んだ']] },
+              { jp: '本を読んだ。', rom: 'Hon o yonda.', en: 'I read a book.', bd: [['読んだ', '読む → 読んだ']] },
+              { jp: '手紙を書いた。', rom: 'Tegami o kaita.', en: 'I wrote a letter.', bd: [['書いた', '書く → 書いた']] }
+            ] },
+          { t: 'warn', lab: 'The exception', h: '行く → 行った',
+            items: [{ x: '行いた', o: '行った', n: 'Just like the て-form, 行く breaks the く→いた rule: 行った.' }] },
+          { t: 'try', lab: 'Your turn', h: 'Make the past', items: ['飲む →', '遊ぶ →', '書く →', '泳ぐ →', '行く →'], note: 'Mind 行く! Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'した, irregulars & polite past',
+        sub: 'す-verbs, する/来る, and 〜ました',
+        particle: 'と',
+        read: { k: 1, task: 'Read the new passage with the translation' },
+        produce: 'Say one past sentence politely (〜ました) and one plainly (〜た).',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'The last group, plus register',
+            body: ['す → <b>した</b>; する → <b>した</b>, 来る → <b>来た</b> (kita). Then: when to use plain 〜た vs polite 〜ました.'] },
+          { t: 'pat', lab: 'The forms', h: 'した · きた · polite 〜ました', formula: ['plain 〜た', 'vs', 'polite 〜ました'], mean: 'Same past, two registers:',
+            ex: [
+              { jp: '友だちと話した。', rom: 'Tomodachi to hanashita.', en: 'I talked with a friend. (plain)', bd: [['話した', '話す → 話した'], ['と', 'with']] },
+              { jp: '昨日、勉強しました。', rom: 'Kinō, benkyō shimashita.', en: 'I studied yesterday. (polite)', bd: [['しました', 'する → polite past']] },
+              { jp: '友だちが来た。', rom: 'Tomodachi ga kita.', en: 'A friend came.', bd: [['来た', '来る → 来た (kita)']] }
+            ] },
+          { t: 'p', lab: 'Register', h: 'Where each past goes',
+            body: ['Polite <b>〜ました</b> ends sentences to strangers/seniors. Plain <b>〜た</b> is for friends — and is required <i>inside</i> clauses (行っ<b>た</b>とき = “when I went,” even in a polite sentence).'] },
+          { t: 'try', lab: 'Your turn', h: 'Both registers', items: ['“I talked with a friend.” (plain)', '“I studied.” (polite)', '“My friend came.” (plain)'], note: 'Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Plain past negative 〜なかった',
+        sub: '“Didn’t”',
+        particle: 'に',
+        read: { k: 2, task: 'Read the third passage on your own' },
+        produce: 'Say three things you didn’t do yesterday, casually.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'From 〜ない to 〜なかった',
+            body: ['You already make the plain negative 〜ない. Past-tense it the way you past-tense any い-adjective: drop い, add <b>かった</b>.'] },
+          { t: 'pat', lab: 'The rule', h: '〜ない → 〜なかった', formula: ['〜ない', '→', '〜なかった'], mean: '“Didn’t ~.”',
+            ex: [
+              { jp: '昨日、何も食べなかった。', rom: 'Kinō, nani mo tabenakatta.', en: 'I didn’t eat anything yesterday.', bd: [['食べなかった', '食べない → 食べなかった']] },
+              { jp: '学校に行かなかった。', rom: 'Gakkō ni ikanakatta.', en: 'I didn’t go to school.', bd: [['行かなかった', '行かない → 行かなかった']] },
+              { jp: '時間がなかった。', rom: 'Jikan ga nakatta.', en: 'I didn’t have time.', bd: [['なかった', 'ない → なかった']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'The same 〜ない traps carry over',
+            items: [{ x: '買あなかった', o: '買わなかった', n: 'う-verbs → わ (買う→買わない→買わなかった). And ある→なかった.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>〜ない is just an い-adjective.</b> Past = drop い + かった → 〜なかった. (Its negative-past you already met: 知らなかった.)'] },
+          { t: 'try', lab: 'Your turn', h: 'Say “didn’t”', items: ['“I didn’t eat.”', '“I didn’t go.”', '“I didn’t have money.” (お金)'], note: 'From 〜ない → 〜なかった. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: '〜たことがある — “have done”',
+        sub: 'Talk about experiences',
+        particle: 'が',
+        read: { k: 2, task: 'Dictation — listen and write it, then compare' },
+        produce: 'Say two things you’ve done and one you never have.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'The past form’s first big job',
+            body: ['Bolt <b>ことがある</b> onto the plain past and you get the “experience” form — “I have (once) done ~.”'] },
+          { t: 'pat', lab: 'The pattern', h: '〜たことがある', formula: ['past plain', '+', 'ことがある'], mean: '“Have done ~ (at least once).”',
+            ex: [
+              { jp: '日本に行ったことがあります。', rom: 'Nihon ni itta koto ga arimasu.', en: 'I’ve been to Japan.', bd: [['行った', 'went — past'], ['ことがあります', 'have the experience of']] },
+              { jp: '寿司を食べたことがありますか。', rom: 'Sushi o tabeta koto ga arimasu ka.', en: 'Have you ever eaten sushi?', bd: [['食べた', 'ate — past'], ['か', '?']] },
+              { jp: '一度も会ったことがない。', rom: 'Ichido mo atta koto ga nai.', en: 'I’ve never met (them).', bd: [['会った', 'met — past'], ['ことがない', 'no such experience']] }
+            ] },
+          { t: 'why', lab: 'Why it works', h: 'Literally “there’s a time I did it”',
+            body: ['<b>こと</b> = “an occasion,” <b>がある</b> = “exists.” So 行ったことがある = “an occasion of having gone exists” → I’ve been. Negative ことがない = no such occasion → never.'] },
+          { t: 'try', lab: 'Your turn', h: 'Share experiences', items: ['“I’ve been to Korea.” (韓国)', '“Have you ever eaten natto?” (納豆)', '“I’ve never seen it.”'], note: 'past plain + ことがある/ない. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Review — the plain past',
+        sub: 'Mirror the て-form, add “didn’t” and “have done”',
+        particle: 'ね',
+        read: { k: 0, task: 'Re-read any passage and say a one-line summary aloud' },
+        produce: 'Tell a 3-sentence mini-story about your day, in plain past.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'The week in one look', h: 'The past, top to bottom',
+            body: ['Plain past = the て-form with <b>て→た, で→だ</b> (行った is the one rebel). Negative is <b>〜なかった</b>. And <b>〜たことがある</b> talks about experience.'] },
+          { t: 'warn', lab: 'Last check', h: 'The slips to have beaten',
+            items: [
+              { x: '行いた', o: '行った', n: 'The 行く exception, in the past too.' },
+              { x: '買あなかった', o: '買わなかった', n: 'う-verbs → わ before ない/なかった.' },
+              { x: 'あった → negative あらなかった', o: 'なかった', n: 'ある is irregular: past negative is なかった.' }
+            ] },
+          { t: 'try', lab: 'Your turn', h: 'Tell your day', items: ['One thing you did (〜た).', 'One thing you didn’t do (〜なかった).', 'One thing you’ve done before (〜たことがある).'], note: 'Plain past throughout. Tap words above to check.' }
+        ] }
+      }
+    ]
+  };
+
+  /* ===================== WEEK 6 — Explaining & reasons ===================== */
+  U[6] = {
+    title: 'Explaining & reasons',
+    days: [
+      {
+        focus: 'から — because',
+        sub: 'State a reason, then a result',
+        particle: 'から',
+        read: { k: 0, task: 'Read the passage with the translation open' },
+        produce: 'Give two reasons for things you did today, using から.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'This week', h: 'Say why',
+            body: ['This unit is about giving reasons and explaining yourself. The workhorse is <b>から</b> — “because.”'] },
+          { t: 'pat', lab: 'The pattern', h: '[reason] から、[result]', formula: ['reason', '+ から +', 'result'], mean: 'から comes right after the reason clause.',
+            ex: [
+              { jp: '寒いから、窓を閉めます。', rom: 'Samui kara, mado o shimemasu.', en: 'It’s cold, so I’ll close the window.', bd: [['寒い', 'cold'], ['から', 'because / so']] },
+              { jp: '時間がないから、急ごう。', rom: 'Jikan ga nai kara, isogō.', en: 'We’re out of time, so let’s hurry.', bd: [['ない', 'not have'], ['から', 'so']] },
+              { jp: '好きだから、毎日食べる。', rom: 'Suki da kara, mainichi taberu.', en: 'I like it, so I eat it every day.', bd: [['好きだ', 'like (な-adj + だ)'], ['から', 'because']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'から needs だ after nouns / な-adjectives',
+            items: [{ x: '学生から', o: '学生だから', n: 'After a noun or な-adjective, add だ before から: 学生<b>だ</b>から, 静か<b>だ</b>から.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>Reason first, から, then result.</b> It’s the reverse of English “I’ll close it because it’s cold.”'] },
+          { t: 'try', lab: 'Your turn', h: 'Give a reason', items: ['“It’s hot, so I’ll open the window.”', '“I have no money, so I won’t go.”', '“I’m tired, so I’ll sleep.”'], note: 'reason + から + result. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'ので — because (softer)',
+        sub: 'Polite, objective reasons',
+        particle: 'ので',
+        read: { k: 0, task: 'Listen with the text hidden, then check' },
+        produce: 'Give a polite excuse using ので.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'A gentler “because”',
+            body: ['<b>ので</b> means the same as から but sounds softer and more objective — good for polite reasons and excuses.'] },
+          { t: 'pat', lab: 'The pattern', h: '[reason] ので、[result]', formula: ['plain form', '+ ので', ''], mean: 'Attach ので to the plain form; after nouns/な-adj use <b>な</b>ので.',
+            ex: [
+              { jp: '電車が遅れたので、遅刻しました。', rom: 'Densha ga okureta node, chikoku shimashita.', en: 'The train was late, so I was late.', bd: [['遅れた', 'was late — past'], ['ので', 'because (soft)']] },
+              { jp: '病気なので、休みます。', rom: 'Byōki na node, yasumimasu.', en: 'I’m ill, so I’ll take the day off.', bd: [['病気なので', 'noun + なので']] },
+              { jp: '静かなので、集中できる。', rom: 'Shizuka na node, shūchū dekiru.', en: 'It’s quiet, so I can focus.', bd: [['静かなので', 'な-adj + なので']] }
+            ] },
+          { t: 'why', lab: 'Why choose it', h: 'から vs ので, in one line',
+            body: ['<b>から</b> = my subjective reason (can sound assertive, even defensive). <b>ので</b> = a softer, more neutral “given that…,” which is why it’s preferred in polite requests and apologies.'] },
+          { t: 'warn', lab: 'Watch out', h: 'なので after nouns / な-adjectives',
+            items: [{ x: '病気ので', o: '病気なので', n: 'Insert な after a noun or な-adjective: 病気<b>な</b>ので, きれい<b>な</b>ので.' }] },
+          { t: 'try', lab: 'Your turn', h: 'Give a soft reason', items: ['“The train was late, so I was late.”', '“It’s my day off, so I’m home.”', '“It’s quiet, so I can study.”'], note: 'plain + ので (noun/な-adj + なので). Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'んです — the explanatory tone',
+        sub: 'Give background and context',
+        particle: 'の',
+        read: { k: 1, task: 'Read the new passage with the translation' },
+        produce: 'Explain why you’re doing something, using んです.',
+        lesson: { min: 7, secs: [
+          { t: 'p', lab: 'Today', h: 'The most Japanese-sounding sentence ending',
+            body: ['<b>んです</b> (casual <b>んだ</b>, formal のです) frames a statement as an <i>explanation</i> — “the thing is…,” “it’s that…” It’s everywhere in natural speech.'] },
+          { t: 'pat', lab: 'The pattern', h: 'plain form + んです', formula: ['plain', '+', 'んです'], mean: 'Presents the sentence as background/reason. Nouns & な-adj take <b>な</b>んです.',
+            ex: [
+              { jp: '頭が痛いんです。', rom: 'Atama ga itai n desu.', en: 'It’s that I have a headache. (explaining)', bd: [['痛い', 'hurts'], ['んです', 'the situation is…']] },
+              { jp: '日本語を勉強しているんです。', rom: 'Nihongo o benkyō shite iru n desu.', en: 'The thing is, I’m studying Japanese.', bd: [['しているんです', 'explanatory']] },
+              { jp: '今日は休みなんです。', rom: 'Kyō wa yasumi na n desu.', en: 'It’s that today’s my day off.', bd: [['休みなんです', 'noun + なんです']] }
+            ] },
+          { t: 'why', lab: 'Why it works', h: 'んです = “here’s the context”',
+            body: ['Plain です just states a fact. <b>んです</b> signals “this explains something” — answering an unspoken “why?” or setting up a request. Overuse sounds dramatic; the right use sounds natural and connected.'] },
+          { t: 'warn', lab: 'Watch out', h: 'なんです after nouns / な-adjectives',
+            items: [{ x: '学生んです', o: '学生なんです', n: 'Noun/な-adj + <b>な</b>んです: 学生なんです, 便利なんです.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>んです = “the thing is…”</b> It hands the listener the backstory, not just the fact.'] },
+          { t: 'try', lab: 'Your turn', h: 'Explain', items: ['“It’s that I have a headache.”', '“The thing is, I’m busy.” (忙しい)', '“It’s that today is a holiday.”'], note: 'plain + んです (noun/な-adj + なんです). Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: '〜んですか — asking for the story',
+        sub: 'Show interest, ask why',
+        particle: 'か',
+        read: { k: 1, task: 'Shadow the passage — a half-second behind' },
+        produce: 'Ask someone a curious 〜んですか question, then answer with 〜んです.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'The question side of んです',
+            body: ['Add か and 〜んです becomes a warm, curious question — “oh, is it that…?” It invites the other person to explain.'] },
+          { t: 'pat', lab: 'The pattern', h: '〜んですか', formula: ['plain', '+', 'んですか'], mean: 'Asks for background — softer and more interested than plain 〜ますか.',
+            ex: [
+              { jp: 'どこか行くんですか。', rom: 'Dokoka iku n desu ka.', en: 'Oh, are you going somewhere?', bd: [['行く', 'go'], ['んですか', 'is it that…?']] },
+              { jp: 'どうして休んだんですか。', rom: 'Dōshite yasunda n desu ka.', en: 'How come you took the day off?', bd: [['休んだ', 'took off — past'], ['どうして', 'why']] },
+              { jp: '日本の方なんですか。', rom: 'Nihon no kata na n desu ka.', en: 'Oh, are you from Japan?', bd: [['方', 'person (polite)'], ['なんですか', 'noun + なんですか']] }
+            ] },
+          { t: 'why', lab: 'Why it works', h: 'It reads the situation',
+            body: ['You use 〜んですか when something prompts the question — you saw a suitcase, so “行くんですか?” It feels attentive; a bare 行きますか can feel like an interrogation.'] },
+          { t: 'try', lab: 'Your turn', h: 'Ask with interest', items: ['“Oh, are you going out?”', '“Why were you absent?”', '“Are you a student?” (curious)'], note: '〜んですか. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'て-form as a light reason',
+        sub: '“…and so I’m sorry / glad”',
+        particle: 'で',
+        read: { k: 2, task: 'Read the third passage on your own' },
+        produce: 'Apologize or react using a て-form reason.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'The て-form quietly gives reasons too',
+            body: ['Beyond “and then,” the て-form can express a light cause — especially with feelings and apologies. It’s softer than から/ので.'] },
+          { t: 'pat', lab: 'The pattern', h: '[cause て], [feeling/result]', formula: ['〜て', '+', 'feeling'], mean: 'The first clause is the reason for the second.',
+            ex: [
+              { jp: '遅れて、すみません。', rom: 'Okurete, sumimasen.', en: 'I’m sorry for being late.', bd: [['遅れて', 'be late — reason'], ['すみません', 'sorry']] },
+              { jp: '会えて、うれしいです。', rom: 'Aete, ureshii desu.', en: 'I’m glad to meet you.', bd: [['会えて', 'can meet — 会える'], ['うれしい', 'glad']] },
+              { jp: 'ニュースを聞いて、驚いた。', rom: 'Nyūsu o kiite, odoroita.', en: 'I heard the news and was surprised.', bd: [['聞いて', 'hear — reason'], ['驚いた', 'was surprised']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'て-reason can’t carry commands',
+            items: [{ x: '寒くて、窓を閉めてください', o: '寒いから、窓を閉めてください', n: 'For a reason behind a request or command, use から/ので. The て-reason is mainly for feelings/spontaneous results.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>Feeling after a て-clause = “because.”</b> 会えてうれしい, 遅れてすみません, 聞いて驚いた.'] },
+          { t: 'try', lab: 'Your turn', h: 'React with a reason', items: ['“Sorry I’m late.”', '“I’m glad to meet you.”', '“I heard it and was surprised.”'], note: 'て-form + feeling. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'から vs ので vs んです',
+        sub: 'Pick the right “because”',
+        particle: 'は',
+        read: { k: 2, task: 'Dictation — listen and write it, then compare' },
+        produce: 'Give the same reason three ways (から / ので / んです).',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'Three tools, three flavours',
+            body: ['They overlap, but each has a feel. Choosing well makes you sound natural.'] },
+          { t: 'pat', lab: 'Side by side', h: 'Same reason, three tones', formula: ['から', 'ので', 'んです'], mean: '“I was late because the train stopped”:',
+            ex: [
+              { jp: '電車が止まったから、遅れた。', rom: '…tomatta kara, okureta.', en: 'から — direct, my reason (casual/assertive).', bd: [['から', 'subjective “because”']] },
+              { jp: '電車が止まったので、遅れました。', rom: '…tomatta node, okuremashita.', en: 'ので — soft, polite, objective.', bd: [['ので', 'gentle “because”']] },
+              { jp: '実は、電車が止まったんです。', rom: 'Jitsu wa, …tomatta n desu.', en: 'んです — offering the explanation itself.', bd: [['んです', '“the thing is…”']] }
+            ] },
+          { t: 'mem', lab: 'Make it stick', h: 'Rule of thumb',
+            items: ['<b>から</b> = I’m telling you my reason. <b>ので</b> = softening it for politeness. <b>んです</b> = handing over the backstory (often answering “why?”).'] },
+          { t: 'try', lab: 'Your turn', h: 'Three ways', items: ['“It’s cold, so I closed the window.” → から', '“…” → ので (polite)', '“(explaining) It’s that it was cold.” → んです'], note: 'Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Review — explaining yourself',
+        sub: 'Reasons, excuses, and background',
+        particle: 'ね',
+        read: { k: 0, task: 'Re-read any passage and say a one-line summary aloud' },
+        produce: 'Explain a real situation in your life using two of the week’s tools.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'The week in one look', h: 'You can now say why',
+            body: ['<b>から</b> (because) · <b>ので</b> (soft because) · <b>んです</b> (explanatory) · <b>〜んですか</b> (curious question) · the <b>て-form</b> as a light reason.'] },
+          { t: 'warn', lab: 'Last check', h: 'The attachment traps',
+            items: [
+              { x: '学生から / 学生ので', o: '学生だから / 学生なので', n: 'Nouns & な-adj: だから, なので, なんです.' },
+              { x: '(command) 寒くて閉めてください', o: '寒いから閉めてください', n: 'Reasons for requests use から/ので, not the て-reason.' }
+            ] },
+          { t: 'try', lab: 'Your turn', h: 'Explain something real', items: ['Why you started studying Japanese (から/ので).', 'Something surprising, reacting with a て-reason.', 'Set up a request with んです, then ask.'], note: 'Tap words above to check.' }
+        ] }
+      }
+    ]
+  };
+
+  /* ===================== WEEK 7 — Wanting to do / have ===================== */
+  U[7] = {
+    title: 'Wanting to do & have',
+    days: [
+      {
+        focus: '〜たい — want to do',
+        sub: 'Express your own desires',
+        particle: 'が',
+        read: { k: 0, task: 'Read the passage with the translation open' },
+        produce: 'Say three things you want to do this week.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'This week', h: 'Two ways to want',
+            body: ['This unit is about desire: <b>〜たい</b> for actions you want to <i>do</i>, and <b>〜がほしい</b> for things you want to <i>have</i>. Start with actions.'] },
+          { t: 'pat', lab: 'The pattern', h: 'ます-stem + たい', formula: ['ます-stem', '+', 'たい'], mean: 'Take the polite stem and add たい — “want to ~.”',
+            ex: [
+              { jp: '寿司が食べたい。', rom: 'Sushi ga tabetai.', en: 'I want to eat sushi.', bd: [['食べたい', '食べます → 食べ + たい']] },
+              { jp: '日本に行きたいです。', rom: 'Nihon ni ikitai desu.', en: 'I want to go to Japan.', bd: [['行きたい', '行きます → 行きたい'], ['に', 'to']] },
+              { jp: '少し休みたい。', rom: 'Sukoshi yasumitai.', en: 'I want to rest a little.', bd: [['休みたい', '休みます → 休みたい']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'たい is for YOU (and questions)',
+            items: [{ x: '彼は行きたいです', o: '(your own want, or a question)', n: '〜たい states your own desire, or asks the listener’s. For a third person’s want, you’ll use a different form (Day 5).' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>Drop ます, add たい.</b> 食べ<s>ます</s> → 食べ<b>たい</b>. The thing wanted often takes が.'] },
+          { t: 'try', lab: 'Your turn', h: 'What you want to do', items: ['“I want to eat ramen.”', '“I want to go home.”', '“I want to sleep.”'], note: 'ます-stem + たい. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'たい conjugates like an い-adjective',
+        sub: 'Negative, past, and “didn’t want”',
+        particle: 'は',
+        read: { k: 0, task: 'Listen with the text hidden, then check' },
+        produce: 'Say something you wanted but didn’t do, and something you don’t want to do.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'たい ends in い — so inflect it like one',
+            body: ['Because <b>たい</b> ends in い, it bends exactly like an い-adjective (たかい → たくない → たかった).'] },
+          { t: 'pat', lab: 'The forms', h: 'たくない · たかった · たくなかった', formula: ['たい', '→', 'たくない / たかった'], mean: 'Don’t want / wanted / didn’t want:',
+            ex: [
+              { jp: '今日は行きたくない。', rom: 'Kyō wa ikitakunai.', en: 'I don’t want to go today.', bd: [['行きたくない', 'たい → たくない']] },
+              { jp: 'もっと食べたかった。', rom: 'Motto tabetakatta.', en: 'I wanted to eat more.', bd: [['食べたかった', 'たい → たかった (past)']] },
+              { jp: '見たくなかった。', rom: 'Mitakunakatta.', en: 'I didn’t want to see it.', bd: [['見たくなかった', 'たい → たくなかった']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'Drop the final い of たい first',
+            items: [{ x: 'たいくない', o: 'たくない', n: 'Like any い-adj: たい → た<b>く</b>ない, た<b>かった</b>. The い goes.' }] },
+          { t: 'try', lab: 'Your turn', h: 'Inflect たい', items: ['“I don’t want to work.”', '“I wanted to go.”', '“I didn’t want to eat it.”'], note: 'Treat たい like an い-adjective. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: '名詞 + がほしい — want a thing',
+        sub: 'Desire for objects, not actions',
+        particle: 'が',
+        read: { k: 1, task: 'Read the new passage with the translation' },
+        produce: 'Name two things (not actions) that you want.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'For things, switch to ほしい',
+            body: ['When you want a <b>thing</b> (not to do something), use <b>ほしい</b> — itself an い-adjective — with が.'] },
+          { t: 'pat', lab: 'The pattern', h: '[thing] がほしい', formula: ['noun', '+ が', 'ほしい'], mean: '“I want (a) ~.”',
+            ex: [
+              { jp: '新しい車がほしい。', rom: 'Atarashii kuruma ga hoshii.', en: 'I want a new car.', bd: [['車が', 'car'], ['ほしい', 'want (a thing)']] },
+              { jp: '時間がほしいです。', rom: 'Jikan ga hoshii desu.', en: 'I want (more) time.', bd: [['時間が', 'time']] },
+              { jp: '何がほしいですか。', rom: 'Nani ga hoshii desu ka.', en: 'What do you want?', bd: [['何が', 'what'], ['か', '?']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'たい (do) vs ほしい (have)',
+            items: [{ x: '本をほしい / 本がしたい', o: '本がほしい', n: 'Want a THING → がほしい. Want to DO → 〜たい. Don’t cross them.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>たい = to do, ほしい = to have.</b> Both bend like い-adjectives (ほしくない, ほしかった).'] },
+          { t: 'try', lab: 'Your turn', h: 'What you want', items: ['“I want a new phone.” (電話)', '“I want time.”', '“What do you want?”'], note: 'noun + がほしい. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'を or が with 〜たい',
+        sub: 'Marking the object of desire',
+        particle: 'を',
+        read: { k: 1, task: 'Shadow the passage — a half-second behind' },
+        produce: 'Say one want with を and the same with が.',
+        lesson: { min: 5, secs: [
+          { t: 'p', lab: 'Today', h: 'A small choice that sounds natural',
+            body: ['With 〜たい, the object can take <b>を</b> or <b>が</b>. Both are correct; が leans into the <i>craving</i>.'] },
+          { t: 'pat', lab: 'The pattern', h: '〜を〜たい / 〜が〜たい', formula: ['object を / が', '+', '〜たい'], mean: 'が spotlights the thing you desire:',
+            ex: [
+              { jp: 'コーヒーが飲みたい。', rom: 'Kōhī ga nomitai.', en: 'I want (a) coffee. (craving it)', bd: [['が', 'spotlights the object']] },
+              { jp: 'パンを買いたい。', rom: 'Pan o kaitai.', en: 'I want to buy bread. (neutral)', bd: [['を', 'plain object']] }
+            ] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>が = “it’s this I want.”</b> When the object itself is the point of the sentence, が feels right.'] },
+          { t: 'try', lab: 'Your turn', h: 'Both markers', items: ['“I want to drink water.” (が)', '“I want to buy a ticket.” (を)', 'Say one of them the other way too.'], note: 'Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Other people’s wants',
+        sub: 'You can’t read minds',
+        particle: 'も',
+        read: { k: 2, task: 'Read the third passage on your own' },
+        produce: 'Report what a friend or family member wants.',
+        lesson: { min: 7, secs: [
+          { t: 'p', lab: 'Today', h: 'Third-person desire works differently',
+            body: ['〜たい / ほしい describe <i>your own</i> feelings. To say what someone <b>else</b> wants, Japanese describes their observable behaviour: <b>〜たがる / ほしがる</b> (usually + ている).'] },
+          { t: 'pat', lab: 'The pattern', h: '〜たがっている · ほしがっている', formula: ['〜たい → 〜たがる', '·', 'ほしい → ほしがる'], mean: '“(Someone) is showing they want to ~ / want ~.”',
+            ex: [
+              { jp: '弟が日本に行きたがっている。', rom: 'Otōto ga Nihon ni ikitagatte iru.', en: 'My little brother wants to go to Japan.', bd: [['行きたがっている', 'たい → たがる + ている']] },
+              { jp: '子どもがそのおもちゃをほしがっている。', rom: 'Kodomo ga sono omocha o hoshigatte iru.', en: 'The child wants that toy.', bd: [['ほしがっている', 'ほしい → ほしがる']] }
+            ] },
+          { t: 'why', lab: 'Why it works', h: 'Feelings are private; behaviour is visible',
+            body: ['Japanese avoids asserting another person’s inner state as fact. <b>〜がる</b> literally means “to show signs of ~,” so 行きたがっている = “is acting like they want to go.” Safe and natural.'] },
+          { t: 'warn', lab: 'Watch out', h: 'Don’t use bare たい for others',
+            items: [{ x: '彼は行きたいです', o: '彼は行きたがっています / 行きたいようです', n: 'For a third party, use たがる, or hedge: 〜たいようです / 〜たいと言っていた.' }] },
+          { t: 'try', lab: 'Your turn', h: 'Report a want', items: ['“My brother wants to go.”', '“The kids want ice cream.” (アイス)', '“She wants a new bag.” (かばん)'], note: '〜たがっている / ほしがっている. Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Softening wants & requests',
+        sub: 'From たい to a polite ask',
+        particle: 'か',
+        read: { k: 2, task: 'Dictation — listen and write it, then compare' },
+        produce: 'Turn a want into a polite request with 〜たいんですが.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'Today', h: 'Raw たい can be too blunt',
+            body: ['Stating a bare want to someone senior can feel pushy. Two fixes: soften with <b>〜たいんですが</b>, and invite rather than ask about wants.'] },
+          { t: 'pat', lab: 'The pattern', h: '〜たいんですが…', formula: ['〜たい', '+', 'んですが'], mean: 'A polite lead-in — “I’d like to ~, so…” (trailing off invites help).',
+            ex: [
+              { jp: 'ちょっと聞きたいんですが。', rom: 'Chotto kikitai n desu ga.', en: 'I’d like to ask something, if I may.', bd: [['聞きたい', 'want to ask'], ['んですが', 'polite, trailing']] },
+              { jp: '予約したいんですが…', rom: 'Yoyaku shitai n desu ga…', en: 'I’d like to make a reservation…', bd: [['したいんですが', 'soft request opener']] }
+            ] },
+          { t: 'warn', lab: 'Watch out', h: 'Don’t ask a superior “〜たいですか”',
+            items: [{ x: '(to your boss) コーヒーを飲みたいですか', o: 'コーヒーを飲みませんか / いかがですか', n: 'Asking a superior’s desires directly is too forward. Offer instead: 〜ませんか, いかがですか.' }] },
+          { t: 'mem', lab: 'Make it stick', h: 'Hook', items: ['<b>〜たいんですが = a polite doorway.</b> State the want softly, let the listener offer to help.'] },
+          { t: 'try', lab: 'Your turn', h: 'Soften it', items: ['“I’d like to ask something…”', '“I’d like to book a table…”', 'Offer someone a drink with 〜ませんか.'], note: 'Tap words above to check.' }
+        ] }
+      },
+      {
+        focus: 'Review — wants & desires',
+        sub: 'Do, have, and other people',
+        particle: 'ね',
+        read: { k: 0, task: 'Re-read any passage and say a one-line summary aloud' },
+        produce: 'Two things you want to do, one thing you want, one thing a friend wants.',
+        lesson: { min: 6, secs: [
+          { t: 'p', lab: 'The week in one look', h: 'The whole desire toolkit',
+            body: ['<b>〜たい</b> (do) and <b>〜がほしい</b> (have), both bending like い-adjectives; <b>を/が</b> with たい; <b>〜たがる/ほしがる</b> for others; and <b>〜たいんですが</b> to stay polite.'] },
+          { t: 'warn', lab: 'Last check', h: 'The traps to have beaten',
+            items: [
+              { x: '本をほしい', o: '本がほしい', n: 'Things → がほしい; actions → 〜たい.' },
+              { x: '彼は行きたい', o: '彼は行きたがっている', n: 'Third-person want → 〜たがる.' },
+              { x: 'たいくない', o: 'たくない', n: 'たい inflects like an い-adjective.' }
+            ] },
+          { t: 'try', lab: 'Your turn', h: 'Put it together', items: ['Two things you want to do.', 'One thing you want to have.', 'One thing a friend or relative wants.'], note: 'Tap words above to check.' }
+        ] }
+      }
+    ]
+  };
 })();
