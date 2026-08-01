@@ -107,7 +107,22 @@
     '.td-daybar .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22)}',
     '.td-daybar .dots i.on{background:var(--lime)}',
     '.td-gram .tomo-ic{background:#C3E5FF !important}',
-    '.td-sub{display:block;font:500 12px var(--ui);color:var(--muted);margin-top:2px}'
+    '.td-sub{display:block;font:500 12px var(--ui);color:var(--muted);margin-top:2px}',
+    '.tg-lib{margin-left:auto;flex:0 0 auto;background:var(--surface);border:1.5px solid rgba(62,35,23,.3);border-radius:999px;padding:7px 12px;font:600 12px var(--ui);color:var(--ink);box-shadow:0 2px 0 rgba(62,35,23,.5);cursor:pointer}',
+    '.tl-use{background:var(--surface-3);border:1px solid var(--line);border-left:4px solid var(--sky);border-radius:0 14px 14px 0;padding:12px 15px;margin:8px 0 2px}',
+    '.tl-use-h{display:flex;align-items:center;gap:7px;font:700 11px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:6px}',
+    '.tl-use-h .dot{width:6px;height:6px;border-radius:50%;background:var(--sky)}',
+    '.tl-use-b{font:500 14.5px/1.62 var(--ui);color:var(--ink)}.tl-use-b b{font-weight:700}.tl-use-b i{font-style:italic}',
+    '.td-lib{display:block;width:100%;background:var(--surface);border:1.6px dashed rgba(62,35,23,.32);border-radius:14px;padding:12px;margin:0 0 14px;font:600 13.5px var(--ui);color:var(--ink);cursor:pointer;box-shadow:0 2px 0 rgba(62,35,23,.06)}',
+    '.td-lib:active{transform:translateY(1px);box-shadow:0 0 0}',
+    '#tomo-lib{position:fixed;inset:0;z-index:100000;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;font-family:var(--ui)}',
+    '.lib-body{padding:8px 16px calc(env(safe-area-inset-bottom,0px) + 40px);max-width:560px;width:100%;margin:0 auto}',
+    '.lib-h{font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin:18px 0 9px}',
+    '.lib-row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.6px solid rgba(62,35,23,.14);border-radius:14px;padding:13px 14px;margin-bottom:9px;box-shadow:0 2px 0 rgba(62,35,23,.07);cursor:pointer;font-family:var(--ui)}',
+    '.lib-row:active{transform:translateY(1px);box-shadow:0 0 0}',
+    '.lib-tag{flex:0 0 auto;font:700 11px var(--ui);color:var(--seal);background:var(--rose-soft);border:1px solid rgba(62,35,23,.16);border-radius:8px;padding:5px 8px;min-width:70px;text-align:center}',
+    '.lib-ttl{flex:1;font:600 15px var(--ui);color:var(--ink);letter-spacing:-.01em}',
+    '.lib-ar{flex:0 0 auto;color:var(--faint);font-size:20px}'
   ].join('');
   function ensureCSS() {
     if (document.getElementById('tomo-daily-css')) return;
@@ -173,7 +188,11 @@
     if (s.t === 'try') return '<div class="tl-sec">' + lab + h + '<div class="tl-try"><ol>' + s.items.map(function (it) { return '<li>' + it + '</li>'; }).join('') + '</ol>' + (s.note ? '<p class="tl-note">' + esc(s.note) + '</p>' : '') + '</div></div>';
     return '';
   }
-  function lessonHTML(day, idx) {
+  function usageHTML(wk, idx) {
+    try { var arr = window.TOMO_USAGE && window.TOMO_USAGE[wk]; var t = arr && arr[idx - 1]; if (t) return '<div class="tl-use"><div class="tl-use-h"><span class="dot"></span>How to use it</div><div class="tl-use-b">' + t + '</div></div>'; } catch (e) {}
+    return '';
+  }
+  function lessonHTML(day, idx, wk) {
     var read = day.read ? ('Read &amp; listen: ' + esc(day.read.task)) : '';
     var extras = '<div class="tl-sec"><div class="tl-lab"><span class="d"></span>Today’s practice</div>' +
       '<div class="tl-try"><ol>' +
@@ -182,6 +201,7 @@
       (day.produce ? '<li>Write: ' + esc(day.produce) + '</li>' : '') +
       '</ol></div></div>';
     return '<div class="tl-hero"><span class="fx">📚 Day ' + idx + ' · Grammar</span><h3>' + day.focus + '</h3>' + (day.sub ? '<p>' + esc(day.sub) + '</p>' : '') + '</div>' +
+      usageHTML(wk, idx) +
       day.lesson.secs.map(secHTML).join('') + extras;
   }
 
@@ -189,34 +209,54 @@
      FULL-SCREEN GRAMMAR READER
      ===================================================================== */
   function closeGram() { var g = document.getElementById('tomo-gram'); if (g) g.remove(); document.documentElement.style.overflow = ''; }
-  function openGram(idx) {
+  function openGram(idx, wk) {
     ensureCSS();
-    var w = curWeek(); idx = idx || dayIdx();
+    var w = wk || curWeek(); idx = idx || (w === curWeek() ? dayIdx() : 1);
     var day = dayData(w, idx);
     var g = document.getElementById('tomo-gram');
     if (!g) { g = document.createElement('div'); g.id = 'tomo-gram'; document.body.appendChild(g); }
     document.documentElement.style.overflow = 'hidden';
+    var libBtn = '<button class="tg-lib" onclick="TomoDaily.library()">☰ Library</button>';
     if (!day) {
-      g.innerHTML = '<div class="tg-head"><button class="tg-back" onclick="TomoDaily.close()">‹ Back</button><div class="tg-ttl">Grammar<small>Day ' + idx + '</small></div></div><div class="tg-body"><p class="tl-p" style="margin-top:20px">This day’s lesson is being written. It’ll appear here once this unit is authored.</p></div>';
+      g.innerHTML = '<div class="tg-head"><button class="tg-back" onclick="TomoDaily.close()">‹ Back</button><div class="tg-ttl">Grammar<small>Day ' + idx + '</small></div>' + libBtn + '</div><div class="tg-body"><p class="tl-p" style="margin-top:20px">This day’s lesson is being written.</p></div>';
       return;
     }
     var u = unitFor(w), n = (u && u.days ? u.days.length : 7);
     var tabs = '';
-    for (var i = 1; i <= n; i++) tabs += '<div class="tg-day' + (i === idx ? ' on' : '') + (lsGet('tomo_gram_' + w + '_' + i, false) === todayStr() ? ' done' : '') + '" onclick="TomoDaily.open(' + i + ')">' + i + '</div>';
-    var done = isGramDone() || lsGet('tomo_gram_' + w + '_' + idx, false) === todayStr();
+    for (var i = 1; i <= n; i++) tabs += '<div class="tg-day' + (i === idx ? ' on' : '') + (lsGet('tomo_gram_' + w + '_' + i, false) === todayStr() ? ' done' : '') + '" onclick="TomoDaily.open(' + i + ',' + w + ')">' + i + '</div>';
+    var done = lsGet('tomo_gram_' + w + '_' + idx, false) === todayStr();
     g.innerHTML =
       '<div class="tg-head"><button class="tg-back" onclick="TomoDaily.close()">‹ Back</button>' +
-      '<div class="tg-ttl"><small>' + esc(u && u.title ? u.title : 'Week ' + w) + '</small>Grammar — Day ' + idx + ' of ' + n + '</div></div>' +
+      '<div class="tg-ttl"><small>' + esc(u && u.title ? u.title : 'Week ' + w) + '</small>Grammar — Day ' + idx + ' of ' + n + '</div>' + libBtn + '</div>' +
       '<div class="tg-days">' + tabs + '</div>' +
-      '<div class="tg-body" id="tg-body">' + lessonHTML(day, idx) + '</div>' +
-      '<div class="tg-foot"><button class="tg-done" onclick="TomoDaily.finish(' + idx + ')">' + (done ? '✓ Done — close' : 'Mark day complete') + '</button></div>';
+      '<div class="tg-body" id="tg-body">' + lessonHTML(day, idx, w) + '</div>' +
+      '<div class="tg-foot"><button class="tg-done" onclick="TomoDaily.finish(' + idx + ',' + w + ')">' + (done ? '✓ Done — close' : 'Mark day complete') + '</button></div>';
     var body = g.querySelector('#tg-body'); if (body) body.scrollTop = 0;
     try { if (window.__tomoGloss) window.__tomoGloss(g); } catch (e) {}
   }
-  function finishGram(idx) {
-    var w = curWeek(); lsSet('tomo_gram_' + w + '_' + idx, todayStr());
+  function finishGram(idx, wk) {
+    var w = wk || curWeek(); lsSet('tomo_gram_' + w + '_' + idx, todayStr());
     closeGram();
-    try { if (typeof renderHome === 'function') renderHome(); } catch (e) {}
+    try { if (typeof renderHome === 'function' && w === curWeek()) renderHome(); } catch (e) {}
+  }
+
+  /* ---- Grammar library (browse any unit any time) ---- */
+  function closeLib() { var g = document.getElementById('tomo-lib'); if (g) g.remove(); document.documentElement.style.overflow = ''; }
+  function libRow(w) {
+    var u = UNITS[w]; if (!u) return '';
+    var tag = w >= 100 ? ('Basics ' + (w - 100)) : ('Week ' + w);
+    return '<button class="lib-row" onclick="TomoDaily.open(1,' + w + ')"><span class="lib-tag">' + tag + '</span><span class="lib-ttl">' + esc(u.title) + '</span><span class="lib-ar">›</span></button>';
+  }
+  function openLib() {
+    ensureCSS();
+    var g = document.getElementById('tomo-lib'); if (!g) { g = document.createElement('div'); g.id = 'tomo-lib'; document.body.appendChild(g); }
+    document.documentElement.style.overflow = 'hidden';
+    var found = '', main = '', w;
+    for (w = 101; w <= 120; w++) if (UNITS[w]) found += libRow(w);
+    for (w = 1; w <= 40; w++) if (UNITS[w]) main += libRow(w);
+    g.innerHTML =
+      '<div class="tg-head"><button class="tg-back" onclick="TomoDaily.closeLib()">‹ Back</button><div class="tg-ttl"><small>Grammar library</small>Every unit, any time</div></div>' +
+      '<div class="tg-body lib-body">' + (found ? '<div class="lib-h">Foundations</div>' + found : '') + (main ? '<div class="lib-h">Main path</div>' + main : '') + '</div>';
   }
 
   /* ========================================================================
@@ -260,6 +300,14 @@
       // place it right after the day banner
       var bar2 = host.querySelector('.td-daybar');
       if (bar2 && bar2.nextSibling) host.insertBefore(card, bar2.nextSibling); else host.insertBefore(card, host.firstChild);
+    }
+
+    // 2b) Library launcher (once) — browse any unit any time
+    if (host && !host.querySelector('.td-lib')) {
+      var lb = document.createElement('button'); lb.type = 'button'; lb.className = 'td-lib';
+      lb.innerHTML = '☰ Browse all grammar units'; lb.setAttribute('onclick', 'TomoDaily.library()');
+      var gc = host.querySelector('.td-gram');
+      if (gc && gc.nextSibling) host.insertBefore(lb, gc.nextSibling); else if (gc) host.appendChild(lb); else host.insertBefore(lb, host.firstChild);
     }
 
     if (!day) return;
@@ -308,9 +356,11 @@
      PUBLIC API + BOOT
      ===================================================================== */
   window.TomoDaily = {
-    open: function (d) { openGram(d); },
+    open: function (d, w) { openGram(d, w); },
     close: closeGram,
     finish: finishGram,
+    library: openLib,
+    closeLib: closeLib,
     day: dayIdx,
     setDay: function (n) { FORCE_DAY = n; lsSet('tomo_day', { w: curWeek(), idx: n, date: todayStr() }); try { renderHome(); } catch (e) {} },
     nextDay: function () { var s = lsGet('tomo_day', { w: curWeek(), idx: 1 }); this.setDay(Math.min(7, (s.idx || 1) + 1)); },

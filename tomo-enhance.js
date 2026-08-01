@@ -18,7 +18,7 @@
 
   // Load the 7-day-per-unit engine + its grammar content (mutates window.TOMO_UNITS,
   // so order between these two doesn't matter). Injected here to avoid editing index.html.
-  ['tomo-units.js', 'tomo-daily.js'].forEach(function (src) {
+  ['tomo-units.js', 'tomo-usage.js', 'tomo-daily.js'].forEach(function (src) {
     var id = 'ld-' + src;
     if (!document.getElementById(id)) {
       var sc = document.createElement('script');
