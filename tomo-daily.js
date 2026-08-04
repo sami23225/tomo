@@ -320,9 +320,12 @@
         var sub = td.querySelector('.td-sub') || td.querySelector('.ttx span');
         if (sub) { sub.textContent = day.read.task; sub.classList.add('td-sub'); }
         else { var s = document.createElement('span'); s.className = 'td-sub'; s.textContent = day.read.task; b.parentNode.appendChild(s); }
+        // openReading(w) takes the WEEK number (it sets _readW = w). Keep it pointed
+        // at the current week so the passage + audio load; the per-day variation is
+        // the TASK (read / listen / shadow / dictation) shown in the sub-label above.
         [].forEach.call(td.querySelectorAll('[onclick]'), function (btn) {
           var oc = btn.getAttribute('onclick') || '';
-          if (/openReading\(/.test(oc)) btn.setAttribute('onclick', oc.replace(/openReading\(\s*\d+\s*\)/, 'openReading(' + day.read.k + ')'));
+          if (/openReading\(/.test(oc)) btn.setAttribute('onclick', oc.replace(/openReading\(\s*\d+\s*\)/, 'openReading(' + w + ')'));
         });
       }
       else if (/particle lesson/i.test(title) && day.particle) {
